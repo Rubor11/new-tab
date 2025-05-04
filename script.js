@@ -6,7 +6,7 @@ function actualizarHora() {
     const horaFormateada = `${horas}:${minutos}`;
 
     const horaEl = document.getElementById('hora');
-    horaEl.textContent = `Hora local: ${horaFormateada}`;
+    horaEl.textContent = `${horaFormateada}`;
 
     // Determinar día o noche (por ejemplo, día entre 06:00 y 18:00)
     if (fecha.getHours() >= 6 && fecha.getHours() < 18) {
@@ -24,27 +24,27 @@ function obtenerClimaWS(lat, lon, containerId) {
     const url = `http://api.weatherstack.com/current?access_key=${accessKey}&query=${lat},${lon}&units=m`;
 
     fetch(url)
-      .then(resp => {
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        return resp.json();
-      })
-      .then(data => {
-        if (data.error) throw new Error(data.error.info);
-        const temp = data.current.temperature;
-        const desc = data.current.weather_descriptions[0];
-        const icon = data.current.weather_icons[0];  // Icono de clima
-        const climaHtml = `
+        .then(resp => {
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            return resp.json();
+        })
+        .then(data => {
+            if (data.error) throw new Error(data.error.info);
+            const temp = data.current.temperature;
+            const desc = data.current.weather_descriptions[0];
+            const icon = data.current.weather_icons[0];  // Icono de clima
+            const climaHtml = `
           <h4>Clima actual</h4>
           <img src="${icon}" alt="Clima" style="width: 50px; height: 50px;"/>
           <p>${desc}</p>
           <p>${temp}°C</p>
         `;
-        document.getElementById(containerId).innerHTML = climaHtml;
-      })
-      .catch(err => {
-        console.error('Error al obtener el clima WS:', err);
-        document.getElementById(containerId).innerHTML = '<p>No se pudo obtener el clima</p>';
-      });
+            document.getElementById(containerId).innerHTML = climaHtml;
+        })
+        .catch(err => {
+            console.error('Error al obtener el clima WS:', err);
+            document.getElementById(containerId).innerHTML = '<p>No se pudo obtener el clima</p>';
+        });
 }
 
 // Función para obtener la ubicación actual

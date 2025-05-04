@@ -1,25 +1,31 @@
 /* Ocupa toda la pantalla sin scroll */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
   font-family: "Segoe UI", Roboto, sans-serif;
-  background-color: #eeeeee; /* Color de fondo */
+  background-color: #eeeeee;
+  /* Color de fondo */
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
-  grid-template-rows: 1fr 1fr;            /* 2 filas iguales */
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 columnas iguales */
+  grid-template-rows: 1fr 1fr;
+  /* 2 filas iguales */
   height: 100vh;
   width: 100vw;
   gap: 0.2%;
 }
 
 .cell {
-  overflow: hidden; /* Evita que se desborde por dentro */
-  min-width: 0;     /* 🔑 Evita que crezca de más si hay mucho contenido */
+  overflow: hidden;
+  /* Evita que se desborde por dentro */
+  min-width: 0;
+  /* 🔑 Evita que crezca de más si hay mucho contenido */
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -30,6 +36,7 @@ html, body {
   box-sizing: border-box;
   border-radius: 12px;
   background-color: white;
+
 }
 
 /* Primera celda ocupa 2 columnas */
@@ -37,6 +44,7 @@ html, body {
   grid-column: span 2;
   /*background-color: #f9f9f9;*/
 }
+
 
 /* Puedes usar colores diferentes para identificar visualmente 
 .b { background-color: #e0f7fa; }
@@ -47,13 +55,14 @@ html, body {
 */
 .link-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Ajusta tamaño mínimo de las celdas */
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  /* Ajusta tamaño mínimo de las celdas */
   gap: 10px;
   margin-top: 10px;
 }
 
 .link-button {
-  background-color: #ffffff;
+  background-color: #fafafa;
   border: 2px solid #ccc;
   border-radius: 12px;
   text-decoration: none;
@@ -61,41 +70,60 @@ html, body {
   font-weight: 500;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
-  aspect-ratio: 1 / 1; /* Mantiene forma cuadrada */
+  aspect-ratio: 1 / 1;
+  /* Mantiene forma cuadrada */
   display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: center;     /* Centra el contenido verticalmente */
+  justify-content: center;
+  /* Centra el contenido horizontalmente */
+  align-items: center;
+  /* Centra el contenido verticalmente */
   text-align: center;
-  padding: 8px;            /* Ajusta el tamaño del botón */
-  font-size: 0.8rem;       /* Tamaño de texto más pequeño */
+  padding: 8px;
+  /* Ajusta el tamaño del botón */
+  font-size: 0.8rem;
+  /* Tamaño de texto más pequeño */
 }
 
 .link-button:hover {
   background-color: #f0f0f0;
   border-color: #999;
   transform: translateY(-2px);
-  box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  /* Sombra más suave en hover */
 }
 
 .link-icon {
-  width: 30px; /* Icono más pequeño */
+  width: 30px;
+  /* Icono más pequeño */
   height: 30px;
-  margin-right: 0; /* Elimina espacio extra entre el icono y el texto */
+  margin-right: 0;
+  /* Elimina espacio extra entre el icono y el texto */
 }
 
 #hora {
-  font-size: 2rem;  /* Tamaño de la fuente */
-  font-weight: bold;  /* Hacer la fuente más destacada */
-  color: #333;  /* Color del texto */
-  background-color: #f9f9f9;  /* Fondo suave */
-  padding: 10px;  /* Espaciado interno */
-  border-radius: 8px;  /* Bordes redondeados */
-  display: inline-block;  /* Que ocupe solo el espacio necesario */
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);  /* Sombra suave */
-  text-align: center;  /* Centrar el texto */
-  margin-top: 20px;  /* Margen superior */
+  font-size: 1.8rem;
+  /* Tamaño de la fuente */
+  font-weight: bold;
+  /* Hacer la fuente más destacada */
+  color: #333;
+  /* Color del texto */
+  background-color: #f9f9f9;
+  /* Fondo suave */
+  padding: 10px;
+  /* Espaciado interno */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  display: inline-block;
+  /* Que ocupe solo el espacio necesario */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  text-align: center;
+  /* Centrar el texto */
+  margin-top: 20px;
+  /* Margen superior */
   position: relative;
 }
+
 /* Hover de día: muestra sol */
 #hora.day:hover::after {
   content: "";
@@ -109,6 +137,7 @@ html, body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
 #hora.day::after {
   content: "";
   position: absolute;
