@@ -21,7 +21,7 @@ function actualizarHora() {
 // Función para obtener el clima de Weatherstack con ubicación dinámica
 function obtenerClimaWS(lat, lon, containerId) {
     const accessKey = '072afdad369824edb6cf510fd56f014c'; // Tu clave API de Weatherstack
-    const url = `http://api.weatherstack.com/current?access_key=${accessKey}&query=${lat},${lon}&units=m`;
+    const url = `https://api.weatherstack.com/current?access_key=${accessKey}&query=${lat},${lon}&units=m`;
 
     fetch(url)
         .then(resp => {
