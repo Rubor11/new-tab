@@ -3,7 +3,19 @@ function actualizarHora() {
     const fecha = new Date();
     const horas = fecha.getHours().toString().padStart(2, '0');
     const minutos = fecha.getMinutes().toString().padStart(2, '0');
-    document.getElementById('hora').textContent = `${horas}:${minutos}`;
+    const horaFormateada = `${horas}:${minutos}`;
+
+    const horaEl = document.getElementById('hora');
+    horaEl.textContent = `Hora local: ${horaFormateada}`;
+
+    // Determinar día o noche (por ejemplo, día entre 06:00 y 18:00)
+    if (fecha.getHours() >= 6 && fecha.getHours() < 18) {
+        horaEl.classList.add('day');
+        horaEl.classList.remove('night');
+    } else {
+        horaEl.classList.add('night');
+        horaEl.classList.remove('day');
+    }
 }
 
 // Función para obtener el clima de Weatherstack con ubicación dinámica
