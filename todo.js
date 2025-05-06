@@ -1,3 +1,7 @@
+// Definimos la variable datos al principio
+let datos = JSON.parse(localStorage.getItem("todoData")) || {};
+
+// Luego tu código continúa normalmente...
 document.addEventListener("DOMContentLoaded", () => {
     const celdaC = document.querySelector(".cell.c");
 
@@ -18,9 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(nuevaCarpetaBtn);
     celdaC.appendChild(container);
 
-    // Cargar desde localStorage
-    const datos = JSON.parse(localStorage.getItem("todoData")) || {};
-
     function guardarDatos() {
         localStorage.setItem("todoData", JSON.stringify(datos));
     }
@@ -30,33 +31,37 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Esa sección ya existe.");
             return;
         }
-        datos[nombre] = [];
+        datos[nombre] = {
+            creado: new Date().toLocaleString(),
+            tareas: []
+        };
+        console.log("Fecha de creación:", datos[nombre].creado);
         render();
         guardarDatos();
     }
 
     function agregarTarea(nombreCarpeta, textoTarea) {
-        datos[nombreCarpeta].push({ texto: textoTarea, completado: false });
+        datos[nombreCarpeta].tareas.push({ texto: textoTarea, completado: false });
         render();
         guardarDatos();
     }
 
     function render() {
         container.querySelectorAll(".carpeta").forEach(c => c.remove());
-    
+
         for (const nombreCarpeta in datos) {
             const carpeta = document.createElement("div");
             carpeta.classList.add("carpeta");
-    
+
             // Contenedor para el título y el botón eliminar
             const header = document.createElement("div");
             header.style.display = "flex";
             header.style.justifyContent = "space-between";
             header.style.alignItems = "center";
-    
+
             const titulo = document.createElement("h4");
             titulo.textContent = nombreCarpeta;
-    
+
             const eliminarBtn = document.createElement("button");
             eliminarBtn.classList.add("boton-papelera");
             eliminarBtn.innerHTML = `
@@ -74,27 +79,38 @@ document.addEventListener("DOMContentLoaded", () => {
                     render();
                 }
             };
-    
+
             header.appendChild(titulo);
             header.appendChild(eliminarBtn);
-    
-            const tareas = document.createElement("ul");
-            datos[nombreCarpeta].forEach((tarea, idx) => {
-                const li = document.createElement("li");
-                li.textContent = tarea.texto;
-                li.style.textDecoration = tarea.completado ? "line-through" : "none";
-                li.onclick = () => {
-                    tarea.completado = !tarea.completado;
-                    guardarDatos();
-                    render();
-                };
-                tareas.appendChild(li);
-            });
-    
+
+            const fecha = document.createElement("p");
+            fecha.textContent = `Creado el: ${datos[nombreCarpeta].creado}`;
+            fecha.style.fontSize = "0.8em";
+            fecha.style.color = "#666";
+
+            // Verificación antes de iterar sobre las tareas
+            if (datos[nombreCarpeta].tareas && Array.isArray(datos[nombreCarpeta].tareas)) {
+                const tareas = document.createElement("ul");
+                datos[nombreCarpeta].tareas.forEach((tarea, idx) => {
+                    const li = document.createElement("li");
+                    li.textContent = tarea.texto;
+                    li.style.textDecoration = tarea.completado ? "line-through" : "none";
+                    li.onclick = () => {
+                        tarea.completado = !tarea.completado;
+                        guardarDatos();
+                        render();
+                    };
+                    tareas.appendChild(li);
+                });
+                carpeta.appendChild(tareas);
+            } else {
+                console.error(`No se encontraron tareas para la carpeta ${nombreCarpeta}`);
+            }
+
             const input = document.createElement("input");
             input.type = "text";
             input.placeholder = "Nueva tarea";
-    
+
             const addBtn = document.createElement("button");
             addBtn.textContent = "Añadir";
             addBtn.onclick = () => {
@@ -103,19 +119,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     input.value = "";
                 }
             };
-    
+
             const tareaForm = document.createElement("div");
             tareaForm.className = "tarea-form";
             tareaForm.appendChild(input);
             tareaForm.appendChild(addBtn);
-    
+
             carpeta.appendChild(header);
-            carpeta.appendChild(tareas);
+            carpeta.appendChild(fecha);
             carpeta.appendChild(tareaForm);
             container.appendChild(carpeta);
         }
     }
-    
 
     render();
 });
