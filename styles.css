@@ -185,4 +185,92 @@ body {
     width: 24px;
     height: 24px;
   }
+}/* Estilos para el To-Do */
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.todo-container button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4c86ad;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.todo-container button:hover {
+  background-color: #5896c0;
+}
+
+.carpeta {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carpeta h4 {
+  margin: 5px 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.carpeta ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.carpeta li {
+  background-color: #fff;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border-left: 4px solid #4c86ad;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carpeta li:hover {
+  background-color: #eef;
+}
+
+/* Estilos para el contenedor del campo de entrada y botón */
+.carpeta .task-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.carpeta input[type="text"] {
+  width: calc(98% - 80px);
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 1.5%;
+}
+
+.carpeta button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: #4c86ad;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carpeta button:hover {
+  background-color: #5896c0;
+}
+
+.carpeta .task-input-container button {
+  margin-top: 0;
 }

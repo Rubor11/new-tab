@@ -9,7 +9,7 @@ function actualizarHora() {
     horaEl.textContent = `${horaFormateada}`;
 
     // Determinar día o noche (por ejemplo, día entre 06:00 y 18:00)
-    if (fecha.getHours() >= 6 && fecha.getHours() < 18) {
+    if (fecha.getHours() >= 6 && fecha.getHours() < 20) {
         horaEl.classList.add('day');
         horaEl.classList.remove('night');
     } else {
