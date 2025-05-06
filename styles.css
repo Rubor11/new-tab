@@ -224,6 +224,26 @@ body {
   color: #333;
 }
 
+
+/* Contenedor del header con el título y el botón de eliminar */
+.carpeta > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botón de eliminar con el SVG */
+.carpeta button svg {
+  width: 18px;
+  height: 18px;
+  stroke: #e74c3c;
+  transition: stroke 0.2s;
+}
+
+.carpeta button:hover svg {
+  stroke: #c0392b;
+}
+
 .carpeta ul {
   list-style: none;
   padding: 0;
@@ -273,4 +293,26 @@ body {
 
 .carpeta .task-input-container button {
   margin-top: 0;
+}
+
+
+/* Boton eliminar */
+.boton-papelera {
+  background: none;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.icono-papelera {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+  fill: white;
+}
+
+.boton-papelera:hover .icono-papelera {
+  transform: scale(1, 1.2);
+  fill: rgb(212, 82, 82); /* Color rojo al pasar el ratón */
 }
