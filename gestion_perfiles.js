@@ -3,7 +3,6 @@ const perfiles = {
         <h3>Entretenimiento</h3>
 <div class="link-grid">
     <a href="https://gmail.com" class="link-button"><img src="img/gmail.svg" alt="Gmail" title="Gmail" class="link-icon" /></a>
-    <a href="https://chatgpt.com" class="link-button"><img src="img/openai.svg" alt="ChatGPT" title="ChatGPT" class="link-icon" /></a>
     <a href="https://youtube.com" class="link-button"><img src="img/youtube.svg" alt="Youtube" title="Youtube" class="link-icon" /></a>
     <a href="https://x.com/home" class="link-button"><img src="img/twitter.svg" alt="Twitter" title="Twitter" class="link-icon" /></a>
     <a href="https://www.reddit.com/" class="link-button"><img src="img/reddit.svg" alt="Reddit" title="Reddit" class="link-icon" /></a>
@@ -20,7 +19,6 @@ const perfiles = {
     "Perfil 2": `
         <h3>Trabajo</h3>
 <div class="link-grid">
-    <a href="https://chatgpt.com" class="link-button"><img src="img/openai.svg" alt="ChatGPT" title="ChatGPT" class="link-icon" /></a>
     <a href="https://sohohoteles.sharepoint.com/SitePages/Home.aspx" class="link-button"><img src="img/sharepoint.png" alt="SharePoint" title="SharePoint" class="link-icon" /></a>
     <a href="https://pms2.sihot.com/0447/SIHOTHTML/?config=SB_1105_1" class="link-button"><img src="img/sihot.jpg" alt="Sihot" title="Sihot" class="link-icon" /></a>
     <a href="https://gateway.publiccloud.sihot.com:8443/RDWeb/Pages/es-ES/login.aspx?ReturnUrl=/RDWeb/Pages/es-ES/Default.aspx" class="link-button"><img src="img/world.svg" alt="SaaS.sihot.com" title="SaaS.sihot.com" class="link-icon" /></a>
